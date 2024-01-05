@@ -18,4 +18,11 @@ public class Pessoa {
     private String nome;
     private String email;
     private int telefone;
+
+    public Pessoa(PessoaRequestDTO data) {
+        this.nome = data.nome();
+        this.email = data.email();
+        this.telefone = data.telefone();
+
+    }
 }
