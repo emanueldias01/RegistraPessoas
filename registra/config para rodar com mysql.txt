@@ -1,0 +1,16 @@
+properties:
+
+spring.datasource.url=jdbc:mysql://localhost:3306/nome-do-banco-de-dados
+spring.datasource.username=user
+spring.datasource.password=password
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.jpa.hibernate.ddl-auto=update
+
+
+dependências:
+
+ <dependency>
+      <groupId>com.mysql</groupId>
+      <artifactId>mysql-connector-j</artifactId>
+      <scope>runtime</scope>
+    </dependency>
