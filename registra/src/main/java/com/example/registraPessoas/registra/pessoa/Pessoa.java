@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "Pessoas")
 public class Pessoa {
-    @Id @GeneratedValue(strategy = GenerationType.UUID)
+    @Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String nome;
     private String email;
