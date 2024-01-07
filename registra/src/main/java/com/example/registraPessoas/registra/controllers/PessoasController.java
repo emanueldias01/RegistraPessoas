@@ -15,10 +15,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("pessoas")
-@Getter
-@NoArgsConstructor
-@AllArgsConstructor
-@EqualsAndHashCode(of = "id")
 public class PessoasController {
 
     @Autowired
