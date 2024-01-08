@@ -4,10 +4,6 @@ import com.example.registraPessoas.registra.pessoa.Pessoa;
 import com.example.registraPessoas.registra.pessoa.PessoaRequestDTO;
 import com.example.registraPessoas.registra.pessoa.PessoaResponseDTO;
 import com.example.registraPessoas.registra.repository.PessoaRepository;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
