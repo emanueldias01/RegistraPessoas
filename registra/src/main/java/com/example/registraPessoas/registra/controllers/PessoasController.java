@@ -38,9 +38,16 @@ public class PessoasController {
 
     @PutMapping
     @Transactional
-    public void update(@RequestBody PessoaUpdateDTO data){
+    public void updatePeople(@RequestBody PessoaUpdateDTO data){
         var medico = repository.getReferenceById(data.id());
         medico.uptadeInfo(data);
+
+    }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public void deletePeople(@PathVariable Long id){
+        repository.deleteById(id);
 
     }
 
