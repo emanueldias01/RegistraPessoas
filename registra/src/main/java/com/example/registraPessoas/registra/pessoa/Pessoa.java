@@ -17,7 +17,7 @@ public class Pessoa {
     private Long id;
     private String nome;
     private String email;
-    private int telefone;
+    private String telefone;
 
     public Pessoa(PessoaRequestDTO data) {
         this.nome = data.nome();

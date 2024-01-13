@@ -4,6 +4,7 @@ import com.example.registraPessoas.registra.pessoa.Pessoa;
 import com.example.registraPessoas.registra.pessoa.PessoaRequestDTO;
 import com.example.registraPessoas.registra.pessoa.PessoaResponseDTO;
 import com.example.registraPessoas.registra.repository.PessoaRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +24,7 @@ public class PessoasController {
     }
 
     @PostMapping
-    public void savePeople(@RequestBody PessoaRequestDTO data){
+    public void savePeople(@RequestBody @Valid PessoaRequestDTO data){
         Pessoa pessoaData = new Pessoa(data);
         repository.save(pessoaData);
 
