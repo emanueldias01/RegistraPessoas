@@ -6,6 +6,8 @@ import com.example.registraPessoas.registra.pessoa.PessoaResponseDTO;
 import com.example.registraPessoas.registra.repository.PessoaRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,9 +20,10 @@ public class PessoasController {
     PessoaRepository repository;
 
     @GetMapping
-    public List<PessoaResponseDTO> getAllPeoples(){
-        List<PessoaResponseDTO> listPeoples = repository.findAll().stream().map(PessoaResponseDTO::new).toList();
+    public Page<PessoaResponseDTO> getAllPeoples(Pageable paginacao){
+        Page<PessoaResponseDTO> listPeoples = repository.findAll(paginacao).map(PessoaResponseDTO::new);
         return listPeoples;
+
     }
 
     @PostMapping
