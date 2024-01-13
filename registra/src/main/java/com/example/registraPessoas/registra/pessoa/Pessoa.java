@@ -25,4 +25,15 @@ public class Pessoa {
         this.telefone = data.telefone();
 
     }
+
+    public void uptadeInfo(PessoaUpdateDTO data) {
+        if(data.email() != null){
+            this.email = data.email();
+        }
+
+        if(data.telefone() != null){
+            this.telefone = data.telefone();
+        }
+
+    }
 }
