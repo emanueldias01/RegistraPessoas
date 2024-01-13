@@ -1,5 +1,6 @@
 package com.example.registraPessoas.registra.controllers;
 
+import com.example.registraPessoas.registra.dto.PessoaUpdateResponseDTO;
 import com.example.registraPessoas.registra.pessoa.Pessoa;
 import com.example.registraPessoas.registra.pessoa.PessoaRequestDTO;
 import com.example.registraPessoas.registra.pessoa.PessoaResponseDTO;
@@ -9,8 +10,10 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
 
@@ -22,33 +25,37 @@ public class PessoasController {
     PessoaRepository repository;
 
     @GetMapping
-    public Page<PessoaResponseDTO> getAllPeoples(Pageable paginacao){
+    public ResponseEntity getAllPeoples(Pageable paginacao){
         Page<PessoaResponseDTO> listPeoples = repository.findAll(paginacao).map(PessoaResponseDTO::new);
-        return listPeoples;
+        return ResponseEntity.ok(listPeoples);
 
     }
 
     @PostMapping
     @Transactional
-    public void savePeople(@RequestBody @Valid PessoaRequestDTO data){
+    public ResponseEntity savePeople(@RequestBody @Valid PessoaRequestDTO data, UriComponentsBuilder uriBuilder){
         Pessoa pessoaData = new Pessoa(data);
         repository.save(pessoaData);
 
+        var uri = uriBuilder.path("/{id}").buildAndExpand(pessoaData.getId()).toUri();
+
+        return ResponseEntity.created(uri).body(new PessoaResponseDTO(pessoaData));
     }
 
     @PutMapping
     @Transactional
-    public void updatePeople(@RequestBody PessoaUpdateDTO data){
-        var medico = repository.getReferenceById(data.id());
-        medico.uptadeInfo(data);
-
+    public ResponseEntity updatePeople(@RequestBody PessoaUpdateDTO data){
+        var pessoa = repository.getReferenceById(data.id());
+        pessoa.uptadeInfo(data);
+        PessoaUpdateResponseDTO response = new PessoaUpdateResponseDTO(pessoa);
+        return ResponseEntity.ok(response);
     }
 
     @DeleteMapping("/{id}")
     @Transactional
-    public void deletePeople(@PathVariable Long id){
+    public ResponseEntity deletePeople(@PathVariable Long id){
         repository.deleteById(id);
-
+        return ResponseEntity.noContent().build();
     }
 
 }
