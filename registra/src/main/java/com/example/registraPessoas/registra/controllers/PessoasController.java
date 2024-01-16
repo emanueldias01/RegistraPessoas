@@ -1,11 +1,11 @@
 package com.example.registraPessoas.registra.controllers;
 
-import com.example.registraPessoas.registra.dto.PessoaUpdateResponseDTO;
-import com.example.registraPessoas.registra.pessoa.Pessoa;
-import com.example.registraPessoas.registra.dto.PessoaRequestDTO;
-import com.example.registraPessoas.registra.dto.PessoaResponseDTO;
-import com.example.registraPessoas.registra.dto.PessoaUpdateDTO;
-import com.example.registraPessoas.registra.repository.PessoaRepository;
+import com.example.registraPessoas.registra.domain.dto.PessoaUpdateResponseDTO;
+import com.example.registraPessoas.registra.domain.pessoa.Pessoa;
+import com.example.registraPessoas.registra.domain.dto.PessoaRequestDTO;
+import com.example.registraPessoas.registra.domain.dto.PessoaResponseDTO;
+import com.example.registraPessoas.registra.domain.dto.PessoaUpdateDTO;
+import com.example.registraPessoas.registra.domain.repository.PessoaRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

@@ -1,6 +1,6 @@
-package com.example.registraPessoas.registra.dto;
+package com.example.registraPessoas.registra.domain.dto;
 
-import com.example.registraPessoas.registra.pessoa.Pessoa;
+import com.example.registraPessoas.registra.domain.pessoa.Pessoa;
 
 public record PessoaUpdateResponseDTO(Long id, String nome, String email, String telefone ) {
 

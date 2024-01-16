@@ -1,6 +1,7 @@
-package com.example.registraPessoas.registra.pessoa;
+package com.example.registraPessoas.registra.domain.pessoa;
 
-import com.example.registraPessoas.registra.dto.PessoaUpdateDTO;
+import com.example.registraPessoas.registra.domain.dto.PessoaRequestDTO;
+import com.example.registraPessoas.registra.domain.dto.PessoaUpdateDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -26,6 +27,8 @@ public class Pessoa {
         this.telefone = data.telefone();
 
     }
+
+
 
     public void uptadeInfo(PessoaUpdateDTO data) {
         if(data.email() != null){
