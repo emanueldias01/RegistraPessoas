@@ -2,9 +2,9 @@ package com.example.registraPessoas.registra.controllers;
 
 import com.example.registraPessoas.registra.dto.PessoaUpdateResponseDTO;
 import com.example.registraPessoas.registra.pessoa.Pessoa;
-import com.example.registraPessoas.registra.pessoa.PessoaRequestDTO;
-import com.example.registraPessoas.registra.pessoa.PessoaResponseDTO;
-import com.example.registraPessoas.registra.pessoa.PessoaUpdateDTO;
+import com.example.registraPessoas.registra.dto.PessoaRequestDTO;
+import com.example.registraPessoas.registra.dto.PessoaResponseDTO;
+import com.example.registraPessoas.registra.dto.PessoaUpdateDTO;
 import com.example.registraPessoas.registra.repository.PessoaRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +14,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("pessoas")

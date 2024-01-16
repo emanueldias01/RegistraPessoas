@@ -1,4 +1,4 @@
-package com.example.registraPessoas.registra.pessoa;
+package com.example.registraPessoas.registra.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

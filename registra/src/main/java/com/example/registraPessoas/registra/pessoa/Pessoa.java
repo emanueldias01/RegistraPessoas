@@ -1,5 +1,6 @@
 package com.example.registraPessoas.registra.pessoa;
 
+import com.example.registraPessoas.registra.dto.PessoaUpdateDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
