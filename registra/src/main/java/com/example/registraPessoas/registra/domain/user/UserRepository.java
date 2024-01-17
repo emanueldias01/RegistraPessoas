@@ -1,4 +1,4 @@
-package com.example.registraPessoas.registra.user;
+package com.example.registraPessoas.registra.domain.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.core.userdetails.UserDetails;

@@ -1,4 +1,4 @@
-package com.example.registraPessoas.registra.user;
+package com.example.registraPessoas.registra.domain.user;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

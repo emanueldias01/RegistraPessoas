@@ -1,4 +1,4 @@
-package com.example.registraPessoas.registra.user;
+package com.example.registraPessoas.registra.domain.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
