@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/login")
@@ -18,9 +15,9 @@ public class AutenticationController {
     @Autowired
     private AuthenticationManager manager;
 
-    @GetMapping
+    @PostMapping
     public ResponseEntity efetuaLogin(@RequestBody @Valid DadosLoginDTO data){
-        var token = new UsernamePasswordAuthenticationToken(data.login(),data.senha());
+        var token = new UsernamePasswordAuthenticationToken(data.login(),data.password());
          manager.authenticate(token);
         return ResponseEntity.noContent().build();
 
