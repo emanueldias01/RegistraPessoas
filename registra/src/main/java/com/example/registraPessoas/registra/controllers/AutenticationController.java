@@ -19,7 +19,7 @@ public class AutenticationController {
     public ResponseEntity efetuaLogin(@RequestBody @Valid DadosLoginDTO data){
         var token = new UsernamePasswordAuthenticationToken(data.login(),data.password());
          manager.authenticate(token);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok().build();
 
     }
 }
