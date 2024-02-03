@@ -1,6 +1,8 @@
 package com.example.registraPessoas.registra.controllers;
 
 import com.example.registraPessoas.registra.domain.user.DadosLoginDTO;
+import com.example.registraPessoas.registra.domain.user.TokenService;
+import com.example.registraPessoas.registra.domain.user.User;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,11 +17,13 @@ public class AutenticationController {
     @Autowired
     private AuthenticationManager manager;
 
+    @Autowired
+    TokenService tokenService;
     @PostMapping
     public ResponseEntity efetuaLogin(@RequestBody @Valid DadosLoginDTO data){
         var token = new UsernamePasswordAuthenticationToken(data.login(),data.password());
-         manager.authenticate(token);
-        return ResponseEntity.ok().build();
+         var authentication = manager.authenticate(token);
+        return ResponseEntity.ok(tokenService.gerarToken((User) authentication.getPrincipal()));
 
     }
 }
