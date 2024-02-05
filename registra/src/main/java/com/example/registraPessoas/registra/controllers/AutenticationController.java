@@ -21,12 +21,17 @@ public class AutenticationController {
     @Autowired
     TokenService tokenService;
     @PostMapping
-    public ResponseEntity efetuaLogin(@RequestBody @Valid DadosLoginDTO data){
-        var token = new UsernamePasswordAuthenticationToken(data.login(),data.password());
-         var authentication = manager.authenticate(token);
-         tokenDTO tokenDTO =new tokenDTO(tokenService.gerarToken((User) authentication.getPrincipal()));
+    public ResponseEntity efetuarLogin(@RequestBody @Valid DadosLoginDTO dados) {
+        try {
+            var authenticationToken = new UsernamePasswordAuthenticationToken(dados.login(), dados.password());
+            var authentication = manager.authenticate(authenticationToken);
 
-        return ResponseEntity.ok(tokenDTO);
+            var tokenJWT = tokenService.gerarToken((User) authentication.getPrincipal());
 
+            return ResponseEntity.ok(new tokenDTO(tokenJWT));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 }
