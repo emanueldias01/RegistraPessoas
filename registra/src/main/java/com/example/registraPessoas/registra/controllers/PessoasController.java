@@ -6,6 +6,7 @@ import com.example.registraPessoas.registra.domain.dto.PessoaRequestDTO;
 import com.example.registraPessoas.registra.domain.dto.PessoaResponseDTO;
 import com.example.registraPessoas.registra.domain.dto.PessoaUpdateDTO;
 import com.example.registraPessoas.registra.domain.repository.PessoaRepository;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,6 +18,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping("pessoas")
+@SecurityRequirement(name = "bearer-key")
 public class PessoasController {
 
     @Autowired
