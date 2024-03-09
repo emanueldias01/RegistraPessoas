@@ -17,10 +17,18 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 @RestController
 @RequestMapping("pessoas")
 @SecurityRequirement(name = "bearer-key")
 public class PessoasController {
+
+    LocalDateTime timeLog = LocalDateTime.now();
+    DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+
+    String horarioAtual = timeLog.format(formato);
 
     @Autowired
     PessoaRepository repository;
@@ -39,6 +47,8 @@ public class PessoasController {
     public ResponseEntity savePeople(@RequestBody @Valid PessoaRequestDTO data, UriComponentsBuilder uriBuilder){
         Pessoa pessoaData = new Pessoa(data);
         repository.save(pessoaData);
+        System.out.println("POST: " + pessoaData.toString());
+        System.out.println("TIME OPERATION: " + horarioAtual);
 
         var uri = uriBuilder.path("/{id}").buildAndExpand(pessoaData.getId()).toUri();
 
@@ -52,6 +62,8 @@ public class PessoasController {
         var pessoa = repository.getReferenceById(data.id());
         pessoa.uptadeInfo(data);
         PessoaUpdateResponseDTO response = new PessoaUpdateResponseDTO(pessoa);
+        System.out.println("PUT IN: " + pessoa.toString());
+        System.out.println("TIME OPERATION: " + horarioAtual);
         return ResponseEntity.ok(response);
     }
 
@@ -59,7 +71,10 @@ public class PessoasController {
     @Transactional
     @Operation(description = "Deleta uma pessoa pelo id passado na URL")
     public ResponseEntity deletePeople(@PathVariable Long id){
+        var deletado = repository.getReferenceById(id);
         repository.deleteById(id);
+        System.out.println("DELETE PESSOA: " + deletado.toString());
+        System.out.println("TIME OPERATION: " + horarioAtual);
         return ResponseEntity.noContent().build();
     }
 
@@ -67,6 +82,8 @@ public class PessoasController {
     @Operation(description = "Retorna uma pessoa pelo id passado na URL")
     public ResponseEntity details(@PathVariable Long id){
         var detalhe = repository.getReferenceById(id);
+        System.out.println("GET PESSOA: " + detalhe.toString());
+        System.out.println("TIME OPERATION: " + horarioAtual);
         return ResponseEntity.ok(new PessoaResponseDTO(detalhe));
 
     }
