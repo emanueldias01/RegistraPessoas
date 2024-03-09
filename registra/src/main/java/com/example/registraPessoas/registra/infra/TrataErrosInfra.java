@@ -26,7 +26,8 @@ public class TrataErrosInfra {
 
     private record DadosErroValidacao(String campo, String mensagem) {
         public DadosErroValidacao(FieldError erro) {
-            this(erro.getField(), erro.getDefaultMessage());
+            this(erro.getField(),
+                    erro.getDefaultMessage());
         }
     }
 
